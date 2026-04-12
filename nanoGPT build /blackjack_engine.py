@@ -128,8 +128,8 @@ def is_soft_hand(cards: List[str]) -> bool:
         total -= 10
         ace_count -= 1
 
-    # if any ace still effectively counts as 11, it is soft
-    return any(c == "A" for c in cards) and total <= 21 and sum(card_value(c) for c in cards) == total + 10 * ace_count
+       # Any ace not converted from 11 down to 1 means the hand remains soft.
+    return ace_count > 0 and total <= 21
 
 
 def soft_total(cards: List[str]) -> int:
