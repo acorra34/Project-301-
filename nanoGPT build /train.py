@@ -14,6 +14,7 @@
 # - logs train/val loss
 # - saves checkpoints
 # - generates sample text during training
+# - Project 301 
 
 import os
 import time
