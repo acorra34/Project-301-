@@ -77,12 +77,12 @@ data_file = Path(data_path)
 if not data_file.exists():
     raise FileNotFoundError(
         f"Could not find {data_path}\n"
- "Create it first by running: python build_blackjack_dataset.py"
+        "Create it first by running: python build_blackjack_dataset.py"
+    )
 
 text = data_file.read_text(encoding="utf-8")
 if len(text) < block_size + 2:
     raise ValueError("Dataset is too small. Add more training text.")
-)
 
 chars = sorted(list(set(text)))
 vocab_size = len(chars)
