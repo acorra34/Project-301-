@@ -67,6 +67,9 @@ def load_gpt_model(checkpoint_path="out/best_model.pt", meta_path="out/meta.json
     or:
         None, None, None, None
     """
+    if not TORCH_AVAILABLE:
+        return None, None, None, None
+
     ckpt_file = Path(checkpoint_path)
     meta_file = Path(meta_path)
 
@@ -88,6 +91,7 @@ def load_gpt_model(checkpoint_path="out/best_model.pt", meta_path="out/meta.json
     model.eval()
 
     return model, stoi, itos, device
+
 
 
 def encode_text(text, stoi):
@@ -144,7 +148,16 @@ can_double = st.sidebar.checkbox("Double allowed", value=True)
 can_split = st.sidebar.checkbox("Split allowed", value=True)
 dealer_hits_soft_17 = st.sidebar.checkbox("Dealer hits soft 17", value=False)
 
-use_gpt = st.sidebar.checkbox("Use trained nanoGPT explanation (if available)", value=True)
+use_gpt = st.sidebar.checkbox(
+    "Use trained nanoGPT explanation (if available)",
+    value=TORCH_AVAILABLE,
+    disabled=not TORCH_AVAILABLE,
+)
+
+if not TORCH_AVAILABLE:
+    st.sidebar.warning(
+        "PyTorch is not installed in this deployment, so the app will use the rules engine only."
+    )
 
 st.sidebar.markdown("---")
 st.sidebar.write("Recommended training checkpoint paths:")
