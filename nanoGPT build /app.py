@@ -18,10 +18,19 @@ import json
 from pathlib import Path
 
 import streamlit as st
-import torch
+
+try:
+    import torch
+    from model import GPT, GPTConfig
+    TORCH_AVAILABLE = True
+except Exception:
+    torch = None
+    GPT = None
+    GPTConfig = None
+    TORCH_AVAILABLE = False
 
 from blackjack_engine import recommend_action, format_for_gpt
-from model import GPT, GPTConfig
+
 
 
 # --------------------------------------------------
