@@ -1,0 +1,38 @@
+# Blackjack AI Assistant MVP
+
+## Project Summary
+
+The Blackjack AI Assistant is an AI-powered decision-support and training tool for casual and intermediate blackjack players. A user enters their current blackjack hand and the dealer’s visible card, and the system returns a recommended action such as Hit, Stand, Double, or Split. The system combines a rules-based blackjack engine for reliable strategy recommendations with an optional nanoGPT-style language model that explains the recommendation in plain English.
+
+Our original project idea included both blackjack and poker decision support. For the course MVP, we intentionally narrowed the scope to blackjack so we could deliver a working, reproducible system with a user interface, a recommendation engine, and an explanation model within the course timeline. Poker is left as future work. :contentReference[oaicite:0]{index=0} :contentReference[oaicite:1]{index=1}
+
+## What the MVP Does
+
+This MVP allows a user to:
+
+- enter player cards
+- enter the dealer upcard
+- choose whether doubling and splitting are allowed
+- optionally provide additional player cards if the hand already has more than two cards
+- receive a recommended action from the blackjack strategy engine
+- see a plain-English explanation of the recommendation
+- optionally generate an explanation using a trained nanoGPT-style model if checkpoints are available
+
+The system is intended as a blackjack training and strategy-learning tool rather than a full casino-grade simulation system. The current engine uses rules-based basic-strategy-style logic and a heuristic confidence score. It is not a full expected-value simulator. :contentReference[oaicite:2]{index=2} :contentReference[oaicite:3]{index=3}
+
+## Repository Structure
+
+```text
+mvp/
+  Website_BJ_Coach
+  app.py
+  blackjack_engine.py
+  build_blackjack_dataset.py
+  model.py
+  train.py
+  sample.py
+  requirements.txt
+  README.md
+  report.md
+  data/
+  out/
