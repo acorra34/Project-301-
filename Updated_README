@@ -31,7 +31,6 @@ mvp/
   train.py
   sample.py
   requirements.txt
-  README.md
-  artifacts/
+  Updated_README.md
   data/
   out/
